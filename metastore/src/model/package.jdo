@@ -32,7 +32,7 @@
         <column name="DB_ID"/>
       </datastore-identity>
       <field name="name">  
-        <column name="NAME" length="128" jdbc-type="VARCHAR"/>
+        <column name="NAME" length="250" jdbc-type="VARCHAR"/>
         <index name="UniqueDatabase" unique="true"/>
       </field>
       <field name="description">
@@ -794,7 +794,7 @@
       </datastore-identity>
       
       <field name="dbName">  
-        <column name="DB_NAME" length="128" jdbc-type="VARCHAR"/>
+        <column name="DB_NAME" length="250" jdbc-type="VARCHAR"/>
       </field>
       <field name="tblName">
         <column name="TBL_NAME" length="256" jdbc-type="VARCHAR"/>
@@ -841,7 +841,7 @@
       </datastore-identity>
 
       <field name ="dbName">
-        <column name="DB_NAME" length="128" jdbc-type="VARCHAR" allows-null="false"/>
+        <column name="DB_NAME" length="250" jdbc-type="VARCHAR" allows-null="false"/>
       </field>
       <field name="tableName">
         <column name="TABLE_NAME" length="256" jdbc-type="VARCHAR" allows-null="false"/>
@@ -902,7 +902,7 @@
       </datastore-identity>
 
       <field name ="dbName">
-        <column name="DB_NAME" length="128" jdbc-type="VARCHAR" allows-null="false"/>
+        <column name="DB_NAME" length="250" jdbc-type="VARCHAR" allows-null="false"/>
       </field>
       <field name="tableName">
         <column name="TABLE_NAME" length="256" jdbc-type="VARCHAR" allows-null="false"/>
@@ -1041,7 +1041,7 @@
         <column name="EVENT_TYPE" length="32" jdbc-type="VARCHAR" allows-null="false"/>
       </field>
       <field name="dbName">
-        <column name="DB_NAME" length="128" jdbc-type="VARCHAR" allows-null="true"/>
+        <column name="DB_NAME" length="250" jdbc-type="VARCHAR" allows-null="true"/>
       </field>
       <field name="tableName">
         <column name="TBL_NAME" length="256" jdbc-type="VARCHAR" allows-null="true"/>
