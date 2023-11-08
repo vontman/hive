@@ -21,7 +21,7 @@
   </parent>
   <groupId>org.apache.hive</groupId>
   <artifactId>hive</artifactId>
-  <version>2.3.9</version>
+  <version>2.3.9-INX-1.0.0</version>
   <packaging>pom</packaging>
 
   <name>Hive</name>
@@ -223,6 +223,17 @@
       <id>huaweicloud</id>
       <name>huaweicloud</name>
       <url>https://repo.huaweicloud.com/repository/maven/huaweicloudsdk/</url>
+      <layout>default</layout>
+      <releases>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+        <checksumPolicy>warn</checksumPolicy>
+      </releases>
+    </repository>
+    <repository>
+      <id>incortax-builds-local-publish</id>
+      <name>incortax-builds-local</name>
+      <url>https://artifactory.incortalabs.com/artifactory/incortax-builds-local</url>
       <layout>default</layout>
       <releases>
         <enabled>true</enabled>
@@ -779,6 +790,19 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
+
+  <distributionManagement>
+    <repository>
+      <id>incortax-builds-local-publish</id>
+      <name>incortax-central-releases</name>
+      <url>${env.ARTIFACTORY_REPO_URL}</url>
+    </repository>
+    <snapshotRepository>
+      <id>incortax-snapshots</id>
+      <name>incortax-central-snapshots</name>
+      <url>${env.ARTIFACTORY_REPO_URL}</url>
+    </snapshotRepository>
+  </distributionManagement>
 
   <dependencies>
     <!-- dependencies are always listed in sorted order by groupId, artifectId -->
