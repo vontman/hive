@@ -93,6 +93,8 @@ import org.apache.hive.common.util.ReflectionUtil;
 
 import javax.annotation.Nullable;
 
+import static org.apache.hadoop.hive.conf.HiveConf.ConfVars.HIVE_SUPPORT_ALL_LANGUAGES;
+
 public class MetaStoreUtils {
 
   protected static final Logger LOG = LoggerFactory.getLogger("hive.log");
@@ -590,7 +592,10 @@ public class MetaStoreUtils {
    */
   static public boolean validateName(String name, Configuration conf) {
     Pattern tpat = null;
-    String allowedCharacters = "\\w_";
+    boolean supportAllLanguages = conf  == null ?
+            HIVE_SUPPORT_ALL_LANGUAGES.defaultBoolVal
+            :HiveConf.getBoolVar(conf, HIVE_SUPPORT_ALL_LANGUAGES);
+    String allowedCharacters = supportAllLanguages ? "(\\p{IsAlphabetic}|\\p{Sc}|_|\\p{IsDigit})+" : "[\\w_]+";
     if (conf != null
         && HiveConf.getBoolVar(conf,
             HiveConf.ConfVars.HIVE_SUPPORT_SPECICAL_CHARACTERS_IN_TABLE_NAMES)) {
@@ -598,7 +603,7 @@ public class MetaStoreUtils {
         allowedCharacters += c;
       }
     }
-    tpat = Pattern.compile("[" + allowedCharacters + "]+");
+    tpat = Pattern.compile(allowedCharacters);
     Matcher m = tpat.matcher(name);
     if (m.matches()) {
       return true;

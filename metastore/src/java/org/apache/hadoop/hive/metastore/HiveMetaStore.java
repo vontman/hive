@@ -860,7 +860,7 @@ public class HiveMetaStore extends ThriftHiveMetastore {
 
     private void create_database_core(RawStore ms, final Database db)
         throws AlreadyExistsException, InvalidObjectException, MetaException {
-      if (!validateName(db.getName(), null)) {
+      if (!validateName(db.getName(), hiveConf)) {
         throw new InvalidObjectException(db.getName() + " is not a valid database name");
       }
 
