@@ -591,13 +591,6 @@ public class MetaStoreUtils {
   static public boolean validateName(String name, Configuration conf) {
     Pattern tpat = null;
     String allowedCharacters = "(\\p{IsAlphabetic}|\\p{Sc}|_|\\p{IsDigit})+";
-    if (conf != null
-        && HiveConf.getBoolVar(conf,
-            HiveConf.ConfVars.HIVE_SUPPORT_SPECICAL_CHARACTERS_IN_TABLE_NAMES)) {
-      for (Character c : specialCharactersInTableNames) {
-        allowedCharacters += c;
-      }
-    }
     tpat = Pattern.compile(allowedCharacters);
     Matcher m = tpat.matcher(name);
     if (m.matches()) {
